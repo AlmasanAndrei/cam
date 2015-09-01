@@ -16,7 +16,7 @@
         android:id="@+id/button"
         android:clickable="true"
         android:background="#ff0013"
-        android:height="100 dp"
+        android:height="50dp"
         android:singleLine="true"
         android:minHeight="100dp"
         android:layout_alignParentBottom="true"

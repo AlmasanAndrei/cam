@@ -2,14 +2,21 @@ package com.example.kw.cam;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import akiniyalocts.imgurapiexample.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +49,10 @@ public void buttonclicked(  View v){
                 Bitmap cameraimg = (Bitmap) data.getExtras().get("data");
             }
         }
-
+        String url ="https://www.google.com/searchbyimage?&image_url="+
+        WebView view = (WebView) this.findViewById(R.id.webView);
+        view.getSettings().setJavaScriptEnabled(true);
+        view.loadUrl(url);
     }
 
     @Override
@@ -58,30 +68,30 @@ public void buttonclicked(  View v){
     /*
       Start upload
      */
-        new UploadService(this).Execute(upload, new UiCallback());
+        new akiniyalocts.imgurapiexample.services.UploadService(this).Execute(upload, new UiCallback());
     }
 
     private void createUpload(File image) {
-        upload = new Upload();
+        upload = new akiniyalocts.imgurapiexample.imgurmodel.Upload();
 
         upload.image = image;
-        upload.title = uploadTitle.getText().toString();
-        upload.description = uploadDesc.getText().toString();
+        upload.title = "ceva";
+        upload.description = "altceva";
     }
 
-    private class UiCallback implements Callback<ImageResponse> {
+    private class UiCallback implements Callback<akiniyalocts.imgurapiexample.imgurmodel.ImageResponse> {
 
         @Override
-        public void success(ImageResponse imageResponse, Response response) {
+        public void success(akiniyalocts.imgurapiexample.imgurmodel.ImageResponse imageResponse, Response response) {
             clearInput();
         }
 
         @Override
         public void failure(RetrofitError error) {
-            //Assume we have no connection, since error is null
-            if (error == null) {
-                Snackbar.make(findViewById(R.id.rootView), "No internet connection", Snackbar.LENGTH_SHORT).show();
-            }
+
+
         }
     }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
 }//love ya
