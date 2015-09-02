@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void success(akiniyalocts.imgurapiexample.imgurmodel.ImageResponse imageResponse, Response response) {
-            String url = "https://www.google.com/searchbyimage?&image_url=";
+            String url = "https://www.google.com/searchbyimage?&image_url="+imageResponse.link;
             WebView view = (WebView) this.findViewById(R.id.webView);
             view.getSettings().setJavaScriptEnabled(true);
             view.loadUrl(url);
