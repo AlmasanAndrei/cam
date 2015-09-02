@@ -73,10 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
         uploadImage(file);
 
-            String url = "https://www.google.com/searchbyimage?&image_url=";
-        WebView view = (WebView) this.findViewById(R.id.webView);
-        view.getSettings().setJavaScriptEnabled(true);
-        view.loadUrl(url);
+
     }
 
     @Override
@@ -108,7 +105,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void success(akiniyalocts.imgurapiexample.imgurmodel.ImageResponse imageResponse, Response response) {
-            clearInput();
+            String url = "https://www.google.com/searchbyimage?&image_url=";
+            WebView view = (WebView) this.findViewById(R.id.webView);
+            view.getSettings().setJavaScriptEnabled(true);
+            view.loadUrl(url);
         }
 
         @Override
