@@ -43,15 +43,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK) {
-            if (requestCode == Camera_request) {
-                Bitmap cameraimg = (Bitmap) data.getExtras().get("data");
-            }
-        }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult;(int requestCode, int resultCode;, Intent data) {
 
             //2
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
