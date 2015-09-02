@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
             //2
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            mImage.setImageBitmap(thumbnail);
+
             //3
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
@@ -117,6 +117,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
- 
+
 
         }
