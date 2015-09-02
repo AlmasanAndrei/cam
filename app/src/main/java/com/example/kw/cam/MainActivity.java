@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
     }
 
-    public void uploadImage() {
+    public void uploadImage(File upFile) {
     /*
       Create the @Upload object
      */
-        if (chosenFile == null) return;
-        createUpload(chosenFile);
+        if (upFile  == null) return;
+        createUpload(upFile );
 
     /*
       Start upload
