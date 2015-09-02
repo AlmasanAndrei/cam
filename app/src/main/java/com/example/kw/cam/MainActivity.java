@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     public static final int Camera_request = 7;
     private Upload upload; // Upload object containging image and meta data
     private File chosenFile; //chosen file from intent
-      @Override
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -35,21 +36,22 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-public void buttonclicked(  View v){
-    Intent cameraIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(cameraIntent, Camera_request)
-}
+
+    public void buttonclicked(View v) {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, Camera_request);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode==RESULT_OK){
-            if(requestCode==Camera_request){
+        if (resultCode == RESULT_OK) {
+            if (requestCode == Camera_request) {
                 Bitmap cameraimg = (Bitmap) data.getExtras().get("data");
             }
         }
-        String url ="https://www.google.com/searchbyimage?&image_url="+
+        String url = "https://www.google.com/searchbyimage?&image_url=";
         WebView view = (WebView) this.findViewById(R.id.webView);
         view.getSettings().setJavaScriptEnabled(true);
         view.loadUrl(url);
@@ -58,6 +60,7 @@ public void buttonclicked(  View v){
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     }
+
     public void uploadImage() {
     /*
       Create the @Upload object
@@ -92,6 +95,8 @@ public void buttonclicked(  View v){
 
         }
     }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-}//love ya
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//love ya
+    }
+}
