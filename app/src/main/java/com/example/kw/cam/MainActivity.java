@@ -51,7 +51,28 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap cameraimg = (Bitmap) data.getExtras().get("data");
             }
         }
-        String url = "https://www.google.com/searchbyimage?&image_url=";
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       
+            //2
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            mImage.setImageBitmap(thumbnail);
+            //3
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            //4
+            File file = new File(Environment.getExternalStorageDirectory()+File.separator + "image.jpg");
+            try {
+                file.createNewFile();
+                FileOutputStream fo = new FileOutputStream(file);
+                //5
+                fo.write(bytes.toByteArray());
+                fo.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            String url = "https://www.google.com/searchbyimage?&image_url=";
         WebView view = (WebView) this.findViewById(R.id.webView);
         view.getSettings().setJavaScriptEnabled(true);
         view.loadUrl(url);
@@ -98,5 +119,27 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 //love yaaa
+
     }
-}
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_PIC_REQUEST) {
+            //2
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            mImage.setImageBitmap(thumbnail);
+            //3
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            //4
+            File file = new File(Environment.getExternalStorageDirectory()+File.separator + "image.jpg");
+            try {
+                file.createNewFile();
+                FileOutputStream fo = new FileOutputStream(file);
+                //5
+                fo.write(bytes.toByteArray());
+                fo.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
