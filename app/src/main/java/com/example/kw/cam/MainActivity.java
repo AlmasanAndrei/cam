@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+        uploadImage(file);
 
             String url = "https://www.google.com/searchbyimage?&image_url=";
         WebView view = (WebView) this.findViewById(R.id.webView);
